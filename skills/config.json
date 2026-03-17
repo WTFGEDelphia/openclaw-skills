@@ -1,0 +1,153 @@
+{
+  "name": "fiery-eye-search",
+  "displayName": "火眼搜索",
+  "displayNameEn": "Fiery Eye Search",
+  "version": "2.0.0",
+  "description": "基于《西游记》孙悟空火眼金睛的智能搜索引擎。8 引擎聚合，智能选择，搜真辨伪。",
+  "slogan": "火眼金睛，搜真辨伪",
+  "subSlogan": "悟空在手，搜索无忧",
+  "defaultEngine": "bing-cn",
+  "engines": {
+    "baidu": {
+      "name": "百度",
+      "url": "https://www.baidu.com/s?wd={query}",
+      "region": "CN",
+      "supports": ["site", "filetype", "quotes", "exclude", "intitle", "inurl"],
+      "priority": 1,
+      "bestFor": ["中文内容", "国内资源", "中文新闻"]
+    },
+    "bing-cn": {
+      "name": "Bing 国内",
+      "url": "https://cn.bing.com/search?q={query}&ensearch=0",
+      "region": "CN",
+      "supports": ["site", "filetype", "quotes", "exclude", "time"],
+      "priority": 2,
+      "bestFor": ["技术文档", "通用搜索", "稳定快速"]
+    },
+    "bing-int": {
+      "name": "Bing 国际",
+      "url": "https://www.bing.com/search?q={query}&ensearch=1",
+      "region": "INT",
+      "supports": ["site", "filetype", "quotes", "exclude", "time", "OR"],
+      "priority": 1,
+      "bestFor": ["国际新闻", "英文内容", "全球资源"]
+    },
+    "brave": {
+      "name": "Brave Search",
+      "url": "https://search.brave.com/search?q={query}",
+      "region": "INT",
+      "supports": ["site", "filetype", "quotes", "exclude", "time"],
+      "priority": 2,
+      "bestFor": ["隐私搜索", "独立索引", "无跟踪"]
+    },
+    "duckduckgo": {
+      "name": "DuckDuckGo",
+      "url": "https://lite.duckduckgo.com/lite/?q={query}",
+      "region": "INT",
+      "supports": ["quotes", "bangs"],
+      "priority": 3,
+      "bestFor": ["隐私搜索", "快速跳转", "Bangs 功能"]
+    },
+    "wolframalpha": {
+      "name": "WolframAlpha",
+      "url": "https://www.wolframalpha.com/input?i={query}",
+      "region": "INT",
+      "supports": ["math", "conversion", "knowledge", "facts"],
+      "priority": 1,
+      "bestFor": ["数学计算", "单位转换", "事实查询"]
+    },
+    "google-hk": {
+      "name": "Google HK",
+      "url": "https://www.google.com.hk/search?q={query}",
+      "region": "INT",
+      "supports": ["site", "filetype", "quotes", "exclude", "time", "related"],
+      "priority": 3,
+      "bestFor": ["全球覆盖", "高质量结果"],
+      "note": "可能需要代理，可能有验证码"
+    },
+    "startpage": {
+      "name": "Startpage",
+      "url": "https://www.startpage.com/sp/search?query={query}",
+      "region": "INT",
+      "supports": ["site", "filetype", "quotes", "privacy"],
+      "priority": 3,
+      "bestFor": ["Google 结果 + 隐私保护"],
+      "note": "可能需要验证"
+    }
+  },
+  "smartSelection": {
+    "enabled": true,
+    "rules": [
+      {
+        "condition": "chinese",
+        "pattern": "[\\u4e00-\\u9fa5]",
+        "preferred": ["baidu", "bing-cn"],
+        "description": "中文查询优先使用国内引擎"
+      },
+      {
+        "condition": "math",
+        "pattern": "[\\d+\\-*/=]|integrate|derivative|convert|calculate",
+        "preferred": ["wolframalpha"],
+        "description": "数学/计算查询使用 WolframAlpha"
+      },
+      {
+        "condition": "privacy",
+        "pattern": "privacy|security|password|encryption",
+        "preferred": ["brave", "duckduckgo"],
+        "description": "隐私相关查询使用隐私引擎"
+      },
+      {
+        "condition": "news",
+        "pattern": "news|最新 | 报道|breaking|latest",
+        "preferred": ["bing-int", "baidu"],
+        "description": "新闻查询使用主流引擎"
+      },
+      {
+        "condition": "code",
+        "pattern": "github|code|tutorial|documentation|API",
+        "preferred": ["bing-int", "duckduckgo"],
+        "description": "代码/技术查询使用国际引擎"
+      }
+    ]
+  },
+  "caching": {
+    "enabled": true,
+    "ttl": 3600000,
+    "maxSize": 1000
+  },
+  "settings": {
+    "maxChars": 8000,
+    "extractMode": "text",
+    "timeout": 30,
+    "proxy": "auto",
+    "retryCount": 3,
+    "retryDelay": 1000,
+    "concurrentLimit": 3
+  },
+  "templates": {
+    "techResearch": {
+      "description": "技术研究",
+      "engines": ["bing-int", "duckduckgo"],
+      "filters": { "time": "m" },
+      "query": "{topic} tutorial OR documentation"
+    },
+    "newsTracking": {
+      "description": "新闻追踪",
+      "engines": ["bing-int", "baidu"],
+      "filters": { "time": "d" },
+      "query": "{topic}"
+    },
+    "academicSearch": {
+      "description": "学术搜索",
+      "engines": ["bing-int"],
+      "filters": { "filetype": "pdf", "site": "edu OR org" },
+      "query": "{topic}"
+    },
+    "codeSearch": {
+      "description": "代码搜索",
+      "engines": ["duckduckgo"],
+      "filters": {},
+      "query": "!gh {language} {topic}"
+    }
+  }
+}
