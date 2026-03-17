@@ -6,7 +6,7 @@
 
 | 技能 | 描述 | 版本 | 状态 |
 |------|------|------|------|
-| [火眼搜索](fiery-eye-search/) | 基于《西游记》孙悟空火眼金睛的智能搜索引擎 | v2.0.0 | ✅ |
+| [火眼搜索](skills/fiery-eye-search/) | 基于《西游记》孙悟空火眼金睛的智能搜索引擎 | v2.0.0 | ✅ |
 
 ## 🔥 火眼搜索 (Fiery Eye Search)
 
@@ -50,10 +50,10 @@ web_fetch({"url": "https://www.wolframalpha.com/input?i=100+USD+to+CNY"})
 
 ### 文档
 
-- [SKILL.md](fiery-eye-search/SKILL.md) - 完整使用指南
-- [EXAMPLES.md](fiery-eye-search/EXAMPLES.md) - 实际示例
-- [ADVANCED_FEATURES.md](fiery-eye-search/ADVANCED_FEATURES.md) - 高级功能
-- [TOOLS.md](fiery-eye-search/TOOLS.md) - JavaScript 工具库
+- [SKILL.md](skills/fiery-eye-search/SKILL.md) - 完整使用指南
+- [EXAMPLES.md](skills/fiery-eye-search/EXAMPLES.md) - 实际示例
+- [ADVANCED_FEATURES.md](skills/fiery-eye-search/ADVANCED_FEATURES.md) - 高级功能
+- [TOOLS.md](skills/fiery-eye-search/TOOLS.md) - JavaScript 工具库
 
 ## 📚 安装
 
@@ -62,7 +62,7 @@ web_fetch({"url": "https://www.wolframalpha.com/input?i=100+USD+to+CNY"})
 git clone https://github.com/WTFGEDelphia/openclaw-skills.git
 
 # 复制特定技能到 OpenClaw
-cp -r openclaw-skills/fiery-eye-search ~/.openclaw/workspace/skills/
+cp -r openclaw-skills/skills/fiery-eye-search ~/.openclaw/workspace/skills/
 ```
 
 ## 🛠️ 开发
