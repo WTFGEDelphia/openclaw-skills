@@ -1,0 +1,36 @@
+{
+  "name": "weather-notify",
+  "displayName": "天气通知",
+  "version": "1.0.0",
+  "description": "定时推送天气通知，支持多城市、多 API 源、自定义模板",
+  "discord": {
+    "channel_id": "${DISCORD_CHANNEL_ID}",
+    "notify_user_id": "${DISCORD_NOTIFY_USER_ID}",
+    "webhook_url": "${DISCORD_WEBHOOK_URL}",
+    "send_mode": "auto"
+  },
+  "city": {
+    "name": "杭州",
+    "latitude": 30.2741,
+    "longitude": 120.1551
+  },
+  "schedule": {
+    "morning": "30 8 * * *",
+    "evening": "0 23 * * *"
+  },
+  "api": {
+    "provider": "open-meteo",
+    "timeout": 10,
+    "retry_times": 3
+  },
+  "environment": {
+    "description": "支持的环境变量配置（优先级高于配置文件）",
+    "variables": {
+      "DISCORD_CHANNEL_ID": "Discord 频道 ID",
+      "DISCORD_NOTIFY_USER_ID": "通知用户 ID",
+      "DISCORD_WEBHOOK_URL": "Discord Webhook URL（可选）",
+      "SEND_MODE": "发送模式：auto/message/webhook",
+      "LOG_LEVEL": "日志级别：DEBUG/INFO/WARNING/ERROR"
+    }
+  }
+}

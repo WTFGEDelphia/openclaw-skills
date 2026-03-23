@@ -2,11 +2,18 @@
   "name": "fiery-eye-search",
   "displayName": "火眼搜索",
   "displayNameEn": "Fiery Eye Search",
-  "version": "2.0.0",
-  "description": "基于《西游记》孙悟空火眼金睛的智能搜索引擎。8 引擎聚合，智能选择，搜真辨伪。",
+  "version": "2.3.0",
+  "description": "基于《西游记》孙悟空火眼金睛的智能搜索引擎。8 引擎聚合，智能选择，搜真辨伪。完全独立，无需 API key。",
   "slogan": "火眼金睛，搜真辨伪",
   "subSlogan": "悟空在手，搜索无忧",
-  "defaultEngine": "bing-cn",
+  "defaultMethod": "web_fetch",
+  "fallbackEngine": "bing-cn",
+  "webSearchIntegration": {
+    "enabled": false,
+    "reason": "仅使用 web_fetch，无需 API key"
+  },
+  "defaultEngine": "bing-int",
+  "requiresJSNote": "详见 JAVASCRIPT_DEPENDENCY_ISSUE.md",
   "engines": {
     "baidu": {
       "name": "百度",

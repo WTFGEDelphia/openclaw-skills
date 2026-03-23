@@ -5,6 +5,46 @@
 
 基于《西游记》孙悟空**火眼金睛**的智能搜索引擎。在太上老君炼丹炉中炼就，能看透真假，识别真伪，洞察一切搜索结果的本质。
 
+**完全独立，无需 API key！**
+
+## ⚠️ 重要提示：JavaScript 依赖问题
+
+某些搜索引擎（DuckDuckGo、WolframAlpha）需要 JavaScript 才能显示完整结果。建议使用以下**无需 JS**的引擎：
+
+| 场景 | 推荐引擎 | 原因 |
+|------|---------|------|
+| 中文内容 | 百度 | 无需 JS，中文优化 |
+| 技术文档 | Bing 国内 | 无需 JS，稳定快速 |
+| 英文内容 | Bing 国际 | 无需 JS，全球覆盖 |
+| 隐私搜索 | Brave | 无需 JS，独立索引 |
+| 计算查询 | Bing | 无需 JS，替代 WolframAlpha |
+
+**详细说明**：[JAVASCRIPT_DEPENDENCY_ISSUE.md](JAVASCRIPT_DEPENDENCY_ISSUE.md)
+
+## 快速开始
+
+### 1. 选择默认引擎
+
+编辑 `config.json`：
+
+```json
+{
+  "defaultEngine": "bing-cn"
+}
+```
+
+### 2. 开始搜索
+
+```javascript
+// 使用默认引擎
+web_fetch({"url": "https://cn.bing.com/search?q=你的关键词&ensearch=0"})
+
+// 或使用特定引擎
+web_fetch({"url": "https://www.baidu.com/s?wd=美伊战争"})
+web_fetch({"url": "https://search.brave.com/search?q=privacy+tools"})
+web_fetch({"url": "https://www.wolframalpha.com/input?i=100+USD+to+CNY"})
+```
+
 ## 🐵 火眼金睛能力
 
 | 悟空能力 | 搜索功能 | 说明 |
@@ -27,71 +67,54 @@
 | Google HK | 国际 | 全球覆盖 | 高质量结果 |
 | Startpage | 国际 | Google+ 隐私 | 隐私 + 质量 |
 
-## 🚀 快速开始
+## 🔥 高级功能
 
-### 基础搜索
+### 火眼金睛能力
+- 🔥 **火眼金睛** - 智能引擎选择（自动选择最佳引擎）
+- 🔄 **七十二变** - 8 引擎灵活切换
+- ☁️ **筋斗云** - 快速搜索，低延迟
+- 🪄 **金箍棒** - 灵活调整搜索范围
 
-```javascript
-// 百度搜索
-web_fetch({"url": "https://www.baidu.com/s?wd=火眼金睛"})
+### 基础功能
+- ✅ 站点内搜索 (`site:`)
+- ✅ 文件类型搜索 (`filetype:`)
+- ✅ 精确匹配 (`"..."`)
+- ✅ 排除关键词 (`-`)
+- ✅ 时间过滤 (`tbs=qdr:w`)
+- ✅ DuckDuckGo Bangs (`!gh`, `!w`, `!yt`)
+- ✅ WolframAlpha 计算
 
-// Bing 国际搜索
-web_fetch({"url": "https://www.bing.com/search?q=Fiery+Eye+Search"})
+### 新增高级功能
+- 🚀 结果缓存（避免重复搜索）
+- 🚀 并行多引擎搜索
+- 🚀 批量搜索
+- 🚀 搜索建议/自动补全
+- 🚀 图像/视频搜索
+- 🚀 搜索历史管理
+- 🚀 结果对比分析
+- 🚀 搜索模板（预设场景）
 
-// Brave 搜索
-web_fetch({"url": "https://search.brave.com/search?q=privacy+tools"})
-
-// WolframAlpha 计算
-web_fetch({"url": "https://www.wolframalpha.com/input?i=100+USD+to+CNY"})
-```
-
-### 高级搜索
-
-```javascript
-// 站点内搜索
-web_fetch({"url": "https://www.bing.com/search?q=site:github.com+openclaw"})
-
-// 文件类型搜索
-web_fetch({"url": "https://www.bing.com/search?q=machine+learning+filetype:pdf"})
-
-// 时间过滤（过去 1 周）
-web_fetch({"url": "https://www.bing.com/search?q=AI+news&tbs=qdr:w"})
-
-// DuckDuckGo Bangs
-web_fetch({"url": "https://lite.duckduckgo.com/lite/?q=!gh+openclaw"})
-```
-
-## 📚 文档
+## 文档
 
 | 文件 | 说明 |
 |------|------|
 | [SKILL.md](SKILL.md) | 完整使用指南 |
 | [EXAMPLES.md](EXAMPLES.md) | 实际示例 |
+| [REFERENCES.md](REFERENCES.md) | 参考文档 |
 | [ADVANCED_FEATURES.md](ADVANCED_FEATURES.md) | 高级功能详解 |
 | [TOOLS.md](TOOLS.md) | JavaScript 工具库 |
-| [REFERENCES.md](REFERENCES.md) | 参考文档 |
-| [CHANGELOG.md](CHANGELOG.md) | 版本历史 |
-| [config.json](config.json) | 配置文件 |
 
-## ⚙️ 配置
+## 代理配置
 
-编辑 `config.json` 修改默认引擎：
-
-```json
-{
-  "defaultEngine": "bing-cn"
-}
-```
-
-## 🌐 代理配置
-
-自动继承 OpenClaw 的代理配置：
+自动继承 OpenClaw 代理配置：
 
 ```bash
 HTTP_PROXY=http://172.20.67.14:7890
 HTTPS_PROXY=http://172.20.67.14:7890
 ```
 
-## 📄 License
+无需额外配置！
+
+## License
 
 MIT

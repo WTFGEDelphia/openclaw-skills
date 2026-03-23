@@ -2,7 +2,23 @@
 
 All notable changes to 火眼搜索 (Fiery Eye Search) will be documented in this file.
 
-## [2.0.0] - 2026-03-17
+## [2.2.0] - 2026-03-17
+
+### 仅使用 web_fetch
+
+- **移除 web_search 依赖** - 完全独立，无需 API key
+- **简化配置** - 专注于 web_fetch 实现
+- **更新文档** - 移除 web_search 相关内容
+
+### Changed
+
+- 版本升级到 2.2.0
+- 禁用 web_search 集成
+- 更新所有文档
+
+---
+
+## [2.1.0] - 2026-03-17
 
 ### 🐵 重大更新
 
